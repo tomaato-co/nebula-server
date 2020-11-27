@@ -1,0 +1,9 @@
+{
+  "name": "nebula-server",
+  "version": "0.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/tomaato-co/nebula-server",
+  "author": "Tom Chesters <tom@tomaaato.xyz>",
+  "license": "GNU",
+  "private": false
+}
