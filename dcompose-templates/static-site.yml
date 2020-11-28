@@ -1,18 +1,19 @@
-version: "3"
+version: "3.7"
 
 services:
   static-${sitename}:
-    image: nginx
-    expose:
-      - 80
-    restart: always
+    image: "nginx:latest"
+    restart: "always"
     environment:
-      VIRTUAL_HOST: ${vhost}
+      VIRTUAL_HOST: "${vhost}"
+      VIRTUAL_PORT: "80"
+      LETSENCRYPT_HOST: "${vhost}"
     volumes:
-      - ./public:/usr/share/nginx/html
-    container_name: static-${sitename}
+      - ""./public:/usr/share/nginx/html"
+    container_name: "static-${sitename}"
+    networks:
+      - "net"
 
 networks:
-  default:
-    external:
-      name: nginx-proxy
+  net:
+    external: true
