@@ -1,6 +1,10 @@
 
 #!/bin/bash
-# Initialises the filespace.
+# Initialises the nebula-server environment.
 
-mkdir ./sites
-mkdir ./sites/sample
+# Create directory for static-sites (web-files and docker-compose configs).
+mkdir -p ./sites
+
+# Create nginx docker network.
+docker network create nginx-proxy
+
