@@ -1,7 +1,21 @@
 const express = require('express')
-const app = express()
-const port = 3000
+const bodyParser = require('body-parser')
+const genApi = require('./api')
 
-app.get('/', (req, res) => res.send('Hello World!'))
+const run = async () => {	
+	const app = express()
+	const port = 3000	
 
-app.listen(port, () => console.log(`Example app listening on port port!`))
+	const api = genApi()
+
+	app.use(bodyParser.json())
+	app.get('/', (req, res) => res.send('Hello World!'))
+	app.use(api)
+	
+	app.listen(port, () => console.log(
+		`nebula-server listening on port ${port}!`
+	))
+}
+
+run()
+
