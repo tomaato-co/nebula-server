@@ -1,11 +1,12 @@
+#!/bin/sh
 
-docker ps -q | xargs docker stop
+docker stop nginx-proxy
 
 docker rm nginx-proxy
-docker rm letsencrypt-helper
 
 cd ./rproxy
-docker-compose up -d
+
+exec docker-compose up -d
 
 cd ../
 

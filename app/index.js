@@ -9,9 +9,10 @@ const run = async () => {
 	const api = genApi()
 
 	app.use(bodyParser.json())
-	app.get('/', (req, res) => res.send('Hello World!'))
 	app.use(api)
 	
+	app.get('/', (req, res) => res.send('Hello World!'))
+
 	app.listen(port, () => console.log(
 		`nebula-server listening on port ${port}!`
 	))
