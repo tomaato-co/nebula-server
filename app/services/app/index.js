@@ -3,6 +3,8 @@ const path = require('path')
 const replaceVars = require('../../util/replaceVars')
 const run = require('../../util/run')
 
+// CREATE
+
 const createApp = async (appName) => {
 	const templatePath = './templates/app'
 	const appPath = `./apps/${appName}`
@@ -47,5 +49,39 @@ const createApp = async (appName) => {
 	await run('docker-compose up -d', { cwd: appPath })
 }
 
-module.exports = {createApp}
+// READ
 
+const readApps = async () => {
+	// Read filenames under apps folder.
+	const filenames = await fs.readdir('./apps') 
+
+	// Filter filenames to only those that are folders.
+	const getFilesInfo = async (remainingFilenames = filenames) => {
+		if (remainingFilenames.length === 0) return []
+		const filename = remainingFilenames[0]
+		const filepath = path.join('./apps', filename)
+		const stat = await fs.stat(filepath)
+		return [
+			{ filename, stat },
+			...remainingFilenames.slice(1)
+		]
+	}
+	const allFilesInfo = await getFilesInfo()
+	const foldersInfo = allFilesInfo.filter(
+		({ stat }) => stat.isDirectory()
+	)
+	const folders = foldersInfo.map(
+		({ filename }) => filename
+	)
+
+	// Return folder names as app names.
+	const appNames = folders
+	return appNames
+}
+
+//
+
+module.exports = {
+	createApp,
+	readApps
+}
