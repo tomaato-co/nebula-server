@@ -20,7 +20,8 @@ const postStaticSite = async (req, res, next) => {
 //
 
 const serveStaticSiteApi = (router) => {
-	router.post('api/static-site/:id', postStaticSite)
+	router.post('/api/static-site/:id', postStaticSite)
+	router.get('/api', (req, res) => res.send('Hw from router.'))
 }
 
 module.exports = serveStaticSiteApi
