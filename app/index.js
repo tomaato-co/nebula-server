@@ -11,7 +11,7 @@ const run = async () => {
 	console.log("Configuring API...")
 	app.use(bodyParser.json())
 	app.use(api)
-	
+
 	app.get('/', (req, res) => res.send('Hello World!'))
 
 	app.listen(port, () => console.log(

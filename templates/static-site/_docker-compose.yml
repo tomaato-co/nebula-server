@@ -5,11 +5,10 @@ services:
     image: "nginx:latest"
     restart: "always"
     environment:
-      VIRTUAL_HOST: "${vhost}"
+      VIRTUAL_HOST: "${sitename}.tomaato-app.co"
       VIRTUAL_PORT: "80"
-      LETSENCRYPT_HOST: "${vhost}"
     volumes:
-      - ""./public:/usr/share/nginx/html"
+      - "./public:/usr/share/nginx/html"
     container_name: "static__${sitename}"
     networks:
       - "net"
