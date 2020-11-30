@@ -1,9 +1,9 @@
 const express = require('express')
-const serveStaticSiteApi = require('./static-site')
+const serveAppApi = require('./app')
 
 const genApi = () => {
 	const router = express.Router()
-	serveStaticSiteApi(router)
+	serveAppApi(router)
 	return router
 }
 
