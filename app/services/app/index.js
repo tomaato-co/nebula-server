@@ -67,6 +67,7 @@ const readApps = async () => {
 		]
 	}
 	const allFilesInfo = await getFilesInfo()
+	console.log(allFilesInfo)
 	const foldersInfo = allFilesInfo.filter(
 		({ stat }) => stat.isDirectory()
 	)
