@@ -8,6 +8,7 @@ const run = async () => {
 
 	const api = genApi()
 
+	console.log("Configuring API...")
 	app.use(bodyParser.json())
 	app.use(api)
 	
