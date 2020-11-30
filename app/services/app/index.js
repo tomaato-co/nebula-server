@@ -63,7 +63,7 @@ const readApps = async () => {
 		const stat = await fs.stat(filepath)
 		return [
 			{ filename, stat },
-			...remainingFilenames.slice(1)
+			...getFilesInfo(remainingFilenames.slice(1))
 		]
 	}
 	const allFilesInfo = await getFilesInfo()
