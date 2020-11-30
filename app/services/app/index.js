@@ -61,9 +61,11 @@ const readApps = async () => {
 		const filename = remainingFilenames[0]
 		const filepath = path.join('./apps', filename)
 		const stat = await fs.stat(filepath)
+		const nextFilenames = remainingFilenames.slice(1)
+		const nextFilesInfo = await getFilesInfo(nextFilenames)
 		return [
 			{ filename, stat },
-			...getFilesInfo(remainingFilenames.slice(1))
+			...nextFilesInfo
 		]
 	}
 	const allFilesInfo = await getFilesInfo()
