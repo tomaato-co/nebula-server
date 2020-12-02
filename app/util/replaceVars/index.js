@@ -1,11 +1,11 @@
 
 const replaceVars = (text, properties) => {
-        const interpolator = /\$\{(.+?)\}/g
+	const interpolator = /\$\{(.+?)\}/g
 	const replaceVarsIter = (interText = text) => {
 		const nextText = interText.replace(
-                        interpolator,
-                        (symbol, identifier) => properties[identifier]
-                )
+			interpolator,
+			(symbol, identifier) => properties[identifier]
+		)
 		if (nextText === interText) {
 			return interText
 		}
@@ -15,4 +15,3 @@ const replaceVars = (text, properties) => {
 }
 
 module.exports = replaceVars
-
