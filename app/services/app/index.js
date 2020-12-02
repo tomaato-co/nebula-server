@@ -222,7 +222,7 @@ const readApps = async () => {
 	// Read filenames under apps folder.
 	const getFilenames = async () => {
 		try {
-			await fs.readdir('./apps')
+			return await fs.readdir('./apps')
 		} catch (err) {
 			console.error(err.message)
 			throw appErr({
