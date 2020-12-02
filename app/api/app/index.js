@@ -97,8 +97,8 @@ const handleErr = ({err, method, res, appName}) => {
 const postApp = async (req, res, next) => {
 	try {
 		const { appName } = req.params
-		const status = await createApp(appName)
-		res.status(status).send()
+		await createApp(appName)
+		res.status(201).send()
 	} catch (err) {
 		const { appName } = req.params
 		handleErr({err, method: 'post', res, appName})
