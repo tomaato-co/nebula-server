@@ -43,6 +43,11 @@ const appErr = ({name, message, ...vars}) => serviceErr({
 //
 
 const createApp = async (appName) => {
+	// Log
+	console.log(
+		`Creating app '${appName}'...`
+	)
+
 	// Ensure app does not exist.
 	const appNames = await readApps()
 	if (appNames.includes(appName)) {
@@ -216,6 +221,7 @@ const createApp = async (appName) => {
 		}
 	} 
 	await createContainer()
+	console.log(`App creation complete. [${appName}]`)
 }
 
 const readApps = async () => {
