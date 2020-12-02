@@ -2,7 +2,7 @@ const {
 	APP_SERV_ERR,
 	createApp, 
 	readApps, 
-	deleteApp 
+	deleteApp: deleteAppOperation 
 } = require('../../services/app')
 
 //
@@ -115,7 +115,7 @@ const getApps = async (req, res, next) => {
 const deleteApp = async (req, res, next) => {
 	try {
 		const { appName } = req.params
-		await deleteApp(appName)
+		await deleteAppOperation(appName)
 		res.status(204).send()
 	} catch (err) {
 		handleErr(err, 'delete', req, res, next)
@@ -127,6 +127,7 @@ const deleteApp = async (req, res, next) => {
 const serveAppApi = (router) => {
 	router.post('/api/app/:appName', postApp)
 	router.get('/api/apps', getApps)
+	router.delete('/api/apps', deleteApp)
 }
 
 module.exports = serveAppApi
