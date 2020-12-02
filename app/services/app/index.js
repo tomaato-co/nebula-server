@@ -235,7 +235,7 @@ const readApps = async () => {
 	const filenames = await getFilenames()
 
 	// Filter filenames to only those that are folders.
-	const getFolders = () => {
+	const getFolders = async () => {
 		try {
 			const allFilesInfo = await mapInSequence(
 				filenames, 
@@ -259,7 +259,7 @@ const readApps = async () => {
 			})
 		}
 	}
-	const folders = getFolders()
+	const folders = await getFolders()
 
 	// Return folder names as app names.
 	const appNames = folders
