@@ -176,7 +176,6 @@ const createApp = async (appName) => {
 			const htmlPath = path.join(appPath, 'public', 'index.html')
 			await fs.writeFile(htmlPath, htmlContent)
 		} catch (err) {
-			console.error(err)
 			throw appErr({
 				name: APP_SERV_ERR.IO_ERROR,
 				message: 'Could not write HTML file.',
@@ -253,6 +252,7 @@ const readApps = async () => {
 			)
 			return folders
 		} catch (err) {
+			console.error(err.message)
 			throw appErr({
 				name: APP_SERV_ERR.IO_ERROR,
 				message: 'Could not filter folders within apps folder.'

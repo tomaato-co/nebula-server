@@ -20,6 +20,7 @@ const APP_API_ERR = {
 }
 
 const handleErr = (err, method, res, appName) => {
+	console.error(err.toString())
 	switch (err.name) {
 		// CLIENT ERRORS
 		case APP_SERV_ERR.ALREADY_EXISTS: 
