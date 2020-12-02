@@ -107,7 +107,7 @@ const postApp = async (req, res, next) => {
 const getApps = async (req, res, next) => {
 	try {
 		const appNames = await readApps()
-		res.status(status).json({appNames})
+		res.status(200).json({appNames})
 	} catch (err) {
 		console.error(err)
 		handleErr(err, 'get', res, next)
