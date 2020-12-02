@@ -32,7 +32,7 @@ const appErr = ({name, message, ...vars}) => serviceErr({
 			)
 		}
 		return (
-			`${service} service error - ${name}\n` +
+			`App service error - ${name}\n` +
 			`Message:  ${message}\n` +
 			varsString
 		)

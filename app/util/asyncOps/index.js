@@ -8,7 +8,6 @@ const mapInSequence = async (array, func) => {
             processedEntry,
             ...(await mapIter(
                 remainingArray.slice(1),
-                func,
                 index + 1
             ))
         ]
