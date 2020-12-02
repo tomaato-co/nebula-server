@@ -108,6 +108,7 @@ const getApps = async (req, res, next) => {
 		const { status, appNames } = await readApps()
 		res.status(status).json({appNames})
 	} catch (err) {
+		console.error(err)
 		handleErr(err, 'get', res, next)
 	}
 }
