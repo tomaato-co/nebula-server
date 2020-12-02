@@ -130,7 +130,7 @@ const deleteApp = async (req, res, next) => {
 const serveAppApi = (router) => {
 	router.post('/api/app/:appName', postApp)
 	router.get('/api/apps', getApps)
-	router.delete('/api/apps', deleteApp)
+	router.delete('/api/app/:appName', deleteApp)
 }
 
 module.exports = serveAppApi
