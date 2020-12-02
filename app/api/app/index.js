@@ -99,7 +99,7 @@ const postApp = async (req, res, next) => {
 		const status = await createApp(appName)
 		res.status(status).send()
 	} catch (err) {
-		handleErr(err, 'post', req, res, next)
+		handleErr(err, 'post', res, next)
 	}
 }
 
@@ -108,7 +108,7 @@ const getApps = async (req, res, next) => {
 		const { status, appNames } = await readApps()
 		res.status(status).json({appNames})
 	} catch (err) {
-		handleErr(err, 'get', req, res, next)
+		handleErr(err, 'get', res, next)
 	}
 }
 
@@ -118,7 +118,7 @@ const deleteApp = async (req, res, next) => {
 		await deleteAppOperation(appName)
 		res.status(204).send()
 	} catch (err) {
-		handleErr(err, 'delete', req, res, next)
+		handleErr(err, 'delete', res, next)
 	}
 }
 
