@@ -19,7 +19,7 @@ const APP_API_ERR = {
 	APP_REMOVAL_FAILED: 'APP_REMOVAL_FAILED',
 }
 
-const handleErr = (err, method, res, appName) => {
+const handleErr = ({err, method, res, appName}) => {
 	console.error(err.toString())
 	switch (err.name) {
 		// CLIENT ERRORS
@@ -100,7 +100,8 @@ const postApp = async (req, res, next) => {
 		const status = await createApp(appName)
 		res.status(status).send()
 	} catch (err) {
-		handleErr(err, 'post', res, next)
+		const { appName } = req.params
+		handleErr({err, method: 'post', res, appName})
 	}
 }
 
@@ -109,8 +110,7 @@ const getApps = async (req, res, next) => {
 		const appNames = await readApps()
 		res.status(200).json({appNames})
 	} catch (err) {
-		console.error(err)
-		handleErr(err, 'get', res, next)
+		handleErr({err, method: 'get', res})
 	}
 }
 
@@ -120,7 +120,8 @@ const deleteApp = async (req, res, next) => {
 		await deleteAppOperation(appName)
 		res.status(204).send()
 	} catch (err) {
-		handleErr(err, 'delete', res, next)
+		const { appName } = req.params
+		handleErr({err, method: 'delete', res, appName})
 	}
 }
 
