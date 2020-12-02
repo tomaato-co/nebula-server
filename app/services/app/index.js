@@ -239,7 +239,7 @@ const readApps = async () => {
 		try {
 			const allFilesInfo = await mapInSequence(
 				filenames, 
-				(filename) => {
+				async (filename) => {
 					const filepath = path.join('./apps', filename)
 					const stat = await fs.stat(filepath)
 					return { filename, stat }
