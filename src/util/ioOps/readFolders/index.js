@@ -1,5 +1,6 @@
 const fs = require('fs-extra')
 const path = require('path')
+const {mapInSequence} = require('../../asyncOps')
 
 const readFolders = async (dir) => {
 	// Read filenames under apps folder.
