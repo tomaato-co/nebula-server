@@ -1,6 +1,6 @@
 const fs = require('fs-extra')
 const path = require('path')
-const genId = require('../../../util]/genId')
+const genId = require('../../../util/genId')
 
 const createDeployment = async (appId) => {    
     // Get all deployments.
