@@ -12,6 +12,6 @@
     "immutable": "^4.0.0-rc.12"
   },
   "scripts": {
-    "start": "node ./app/index.js"
+    "start": "node ./src/index.js"
   }
 }
