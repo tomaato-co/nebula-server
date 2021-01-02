@@ -21,7 +21,7 @@ const readDeployments = async (appId) => {
     // Read each individual deployment from folders.
     const deployments = List(
         await mapInSequence(
-            folders, (depId) => (
+            folders, async (depId) => (
                 await readDeployment(appId, depId)
             )
         )
