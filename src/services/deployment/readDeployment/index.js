@@ -18,3 +18,5 @@ const readDeployment = async (appId, depId) => {
     }
     return deploymentInfo
 }
+
+module.exports = readDeployment
