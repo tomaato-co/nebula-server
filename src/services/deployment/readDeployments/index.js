@@ -1,3 +1,4 @@
+const path = require('path')
 const readFolders = require("../../../util/ioOps/readFolders")
 const { mapInSequence } = require("../../../util/asyncOps")
 const readDeployment = require("../readDeployment")

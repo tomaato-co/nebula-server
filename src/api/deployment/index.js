@@ -1,8 +1,10 @@
-
+const createDeployment = require("../../services/deployment/createDeployment")
+const readDeployment = require("../../services/deployment/readDeployment")
+const readDeployments = require("../../services/deployment/readDeployments")
+const updateDeployment = require("../../services/deployment/updateDeployment")
 
 //
 
-const createDeployment = require("../../services/deployment/createDeployment")
 
 const postDeployment = async (req, res) => {
     try {
@@ -18,7 +20,7 @@ const getDeployments = async (req, res) => {
     try {
         const { appId } = req.params
         const deployments = (await readDeployments(appId)).toJS()
-        res.status(200).json({ deployments })
+        res.status(200).json(deployments)
     } catch (err) {
         throw err
     }
@@ -27,8 +29,8 @@ const getDeployments = async (req, res) => {
 const getDeployment = async (req, res) => {
     try {
         const { appId, depId } = req.params
-        const deployments = await readDeployments(appId, depId)
-        res.status(200).json({ deployments })
+        const deployment = await readDeployment(appId, depId)
+        res.status(200).json(deployment)
     } catch (err) {
         throw err
     }

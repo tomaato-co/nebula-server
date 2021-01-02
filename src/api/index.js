@@ -1,5 +1,6 @@
 const express = require('express')
 const serveAppApi = require('./app')
+const serveDeploymentApi = require('./deployment')
 
 const genApi = () => {
 	const router = express.Router()
