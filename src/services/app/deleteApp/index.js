@@ -1,6 +1,7 @@
 const fs = require('fs-extra')
 const run = require('../../../util/run')
 const appErr = require('../appErr')
+const readApps = require('../readApps')
 
 const deleteApp = async (appName) => {
 	// CHeck app exists.
