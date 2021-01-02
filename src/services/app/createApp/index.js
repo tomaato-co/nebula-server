@@ -3,6 +3,7 @@ const path = require('path')
 const run = require('../../../util/run')
 const appErr = require('../appErr')
 const replaceVars = require('../../../util/replaceVars')
+const readApps = require('../readApps')
 
 const createApp = async (appName) => {
 	// Log
