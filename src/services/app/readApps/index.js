@@ -1,5 +1,4 @@
-const fs = require('fs-extra')
-const path = require('path')
+const readFolders = require('../../../util/ioOps/readFolders')
 const appErr = require('../appErr')
 
 
