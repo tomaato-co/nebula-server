@@ -1,4 +1,4 @@
-
+//
 
 const updateDeployment = async (appId, depId) => {
     // Get deployment directory.
