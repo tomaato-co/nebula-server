@@ -5,12 +5,12 @@ const { handleAppApiErr } = require('./handleErr')
 
 const postApp = async (req, res, next) => {
 	try {
-		const { appId } = req.params
-		await AppService.createApp(appId)
+		const { appName } = req.params
+		await AppService.createApp(appName)
 		res.status(201).send()
 	} catch (err) {
-		const { appId } = req.params
-		handleAppApiErr({err, method: 'post', res, appId})
+		const { appName } = req.params
+		handleAppApiErr({err, method: 'post', res, appName})
 	}
 }
 
@@ -25,21 +25,21 @@ const getApps = async (req, res, next) => {
 
 const deleteApp = async (req, res, next) => {
 	try {
-		const { appId } = req.params
-		await AppService.deleteApp(appId)
+		const { appName } = req.params
+		await AppService.deleteApp(appName)
 		res.status(204).send()
 	} catch (err) {
-		const { appId } = req.params
-		handleAppApiErr({err, method: 'delete', res, appId})
+		const { appName } = req.params
+		handleAppApiErr({err, method: 'delete', res, appName})
 	}
 }
 
 ////
 
 const serveAppApi = (router) => {
-	router.post('/api/app/:appId', postApp)
+	router.post('/api/app/:appName', postApp)
 	router.get('/api/apps', getApps)
-	router.delete('/api/app/:appId', deleteApp)
+	router.delete('/api/app/:appName', deleteApp)
 }
 
 module.exports = serveAppApi
