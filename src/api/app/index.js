@@ -1,5 +1,5 @@
 const AppService = require('../../services/app')
-const { handleAppApiError } = require('./handleErr')
+const { handleAppApiErr } = require('./handleErr')
 
 //
 
@@ -10,7 +10,7 @@ const postApp = async (req, res, next) => {
 		res.status(201).send()
 	} catch (err) {
 		const { appId } = req.params
-		handleAppApiError({err, method: 'post', res, appId})
+		handleAppApiErr({err, method: 'post', res, appId})
 	}
 }
 
@@ -19,7 +19,7 @@ const getApps = async (req, res, next) => {
 		const appNames = await AppService.readApps()
 		res.status(200).json({appNames})
 	} catch (err) {
-		handleAppApiError({err, method: 'get', res})
+		handleAppApiErr({err, method: 'get', res})
 	}
 }
 
@@ -30,7 +30,7 @@ const deleteApp = async (req, res, next) => {
 		res.status(204).send()
 	} catch (err) {
 		const { appId } = req.params
-		handleAppApiError({err, method: 'delete', res, appId})
+		handleAppApiErr({err, method: 'delete', res, appId})
 	}
 }
 
