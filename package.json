@@ -7,10 +7,11 @@
   "license": "GNU",
   "private": false,
   "dependencies": {
-  	"express": "^4.17.1",
-  	"fs-extra": "^9.0.1"
+    "express": "^4.17.1",
+    "fs-extra": "^9.0.1",
+    "immutable": "^4.0.0-rc.12"
   },
   "scripts": {
-	  "start": "node ./app/index.js"
+    "start": "node ./app/index.js"
   }
 }
