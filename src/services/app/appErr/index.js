@@ -1,3 +1,4 @@
+const serviceErr = require('../../../util/serviceErr')
 
 const APP_SERV_ERR = {
 	// Client Err
