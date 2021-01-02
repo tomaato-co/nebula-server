@@ -11,4 +11,4 @@ const genId = () => {
 	return id
 }
 
-modue.exports = genId
+module.exports = genId
