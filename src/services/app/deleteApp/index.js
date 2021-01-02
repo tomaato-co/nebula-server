@@ -1,6 +1,6 @@
 const fs = require('fs-extra')
 const run = require('../../../util/run')
-const {APP_SERV_ERR, appErr } = require('./appErr')
+const {APP_SERV_ERR, appErr } = require('../appErr')
 const readApps = require('../readApps')
 
 const deleteApp = async (appName) => {
