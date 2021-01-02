@@ -34,12 +34,23 @@ const getDeployment = async (req, res) => {
     }
 }
 
+const putDeployment = async (req, res) => {
+    try {
+        const { appId, depId } = req.params
+        await updateDeployment(appId, depId)
+        res.status(200).send()
+    } catch (err) {
+        throw err
+    }
+}
+
 // 
 
 const serveDeploymentApi = (router) => {
     router.post('/api/app/:appId/deployment', postDeployment)
     router.get('/api/app/:appId/deployments', getDeployments)
     router.get('/api/app/:appId/deployment/:depId', getDeployment)
+    router.put('/api/app/:appId/deployment', putDeployment)
 }
 
 module.exports = serveDeploymentApi

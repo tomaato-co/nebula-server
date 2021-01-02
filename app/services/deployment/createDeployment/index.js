@@ -2,56 +2,50 @@ const genId = require('../../../util]/genId')
 
 const createDeployment = (appId) => {    
     // Get all deployments.
-    const allDeployments = await readDeployments(appId)
+    const allDeps = await readDeployments(appId)
     
     // If any deployment has 'dateDeployed' property of 'null',
     // this means there is an active deployment and new one 
     // cannot be created.
-    allDeployments.forEach((deployment) => {
-        if (deployment.dateDeployed === null) {
+    allDeps.forEach((dep) => {
+        if (dep.dateDeployed === null) {
             throw new Error(
                 'Active deployment already exists.'
             )
         }
     })
 
-    // Sort deployments by date.
-    const sortedDeployments = allDeployments.sort(
-        (a, b) => (a.dateDeployed > b.dateDeployed)
-    )
-
     // Generate new deployment id (avoid conflict).
-    const existingIds = allDeployments.map(({id}) => id)
+    const existingIds = allDeps.map(({id}) => id)
     const genDepId = () => {
         const id = genId()
         if (existingIds.includes(id))
             return genDepId()
         return id
     }
-    const newDeploymentId = genDepId()
+    const newDepId = genDepId()
 
-    // Copy most recent deployment folder.
-    const previousDeployment = sortedDeployments.first()
-    const previousDepDir = path.join(
-        './apps', appId, 'deployments', previousDeployment.id
+    // Copy files from /public
+    const publicDir = path.join(
+        './apps', appId, 'public'
     )
-    const newDepDir = path.join(
-        './apps', appId, 'deployments', newDeploymentId
+    const filesDir = path.join(
+        './apps', appId, 
+        'deployments', newDepId,
+        'files'
     )
-    await fs.copy(previousDepDir, newDepDir)
+    await fs.copy(publicDir, filesDir)
 
     // Write into deployment.json
-    const deploymentInfo = {
-        ...previousDeployment,
-        id: newDeploymentId,
-        dateDeployed: null
+    const depInfo = {
+        date: null
     }
-    const deploymentJson = JSON.stringify(deploymentInfo)
+    const depJson = JSON.stringify(depInfo)
     const depJsonPath = path.join(newDepDir, 'deployment.json')
-    await fs.writeFile(depJsonPath, deploymentJson)
+    await fs.writeFile(depJsonPath, depJson)
 
     // Return id.
-    return newDeploymentId
+    return newDepId
 }
 
 module.exports = createDeployment

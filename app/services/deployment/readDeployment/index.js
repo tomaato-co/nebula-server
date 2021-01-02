@@ -1,22 +1,19 @@
 
 
-const readDeployment = async (appId, deploymentId) => {
+const readDeployment = async (appId, depId) => {
     // Read deployment.json
-    const dir = path.join(
+    const depPath = path.join(
         '/apps', appId, 
-        'deployments', deploymentId,
+        'deployments', depId,
         'deployment.json'
     )
-    const deploymentJson = (await fs.readFile(dir)).toString()
+    const deploymentJson = (await fs.readFile(depPath)).toString()
     const {
-        id,
-        files,
-        dateDeployed
+        date
     } = JSON.parse(deploymentJson)
     const deploymentInfo = {
-        id, 
-        files,
-        dateDeployed
+        id: depId,
+        date
     }
     return deploymentInfo
 }
